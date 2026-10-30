@@ -1,0 +1,118 @@
+// Schema para dulcería DULCE HABANA
+// Pago SIEMPRE por WhatsApp, no hay consignación
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// === USUARIOS (solo admin necesita login) ===
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      String   @default("ADMIN") // ADMIN | CUSTOMER
+  phone     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// === ZONAS DE ENTREGA ===
+model DeliveryZone {
+  id           String  @id @default(cuid())
+  name         String  // Habana Vieja, Vedado, Miramar...
+  fee          Float   // tarifa de envío
+  estimatedMin Int     @default(60) // minutos estimados
+  active       Boolean @default(true)
+  createdAt    DateTime @default(now())
+}
+
+// === PRODUCTOS (dulces) ===
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  category    String   // PANETELAS | PANQUES | FLAN | BEBIDAS | COMBOS
+  price       Float
+  image       String
+  ingredients String?  // lista de ingredientes separados por coma
+  portions    Int?     // cuántas porciones (para panetelas/panqués)
+  prepTime    Int?     // tiempo preparación en horas (encargo)
+  isCombo     Boolean  @default(false)
+  comboItems  String?  // descripción de items incluidos en combo
+  stock       Int      @default(99) // siempre disponible (producción bajo demanda)
+  status      String   @default("ACTIVE") // ACTIVE | INACTIVE
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+
+  @@index([category])
+  @@index([status])
+}
+
+// === CARRITO (guest-friendly, sin usuario) ===
+model Cart {
+  id        String    @id @default(cuid())
+  items     CartItem[]
+  createdAt DateTime  @default(now())
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  cartId    String?
+  cart      Cart?   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int     @default(1)
+  notes     String? // instrucciones especiales del cliente
+  createdAt DateTime @default(now())
+}
+
+// === ÓRDENES ===
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique
+  status          String      @default("PENDING_WHATSAPP") // PENDING_WHATSAPP | CONFIRMED | PREPARING | OUT_FOR_DELIVERY | DELIVERED | CANCELLED
+  // Datos del cliente (no requiere cuenta)
+  customerName    String
+  customerPhone   String
+  // Datos de entrega
+  deliveryZoneId  String?
+  deliveryZoneName String?
+  deliveryAddress String
+  deliveryTime    String?     // "Lo antes posible" o "Mañana 3pm"
+  deliveryFee     Float       @default(0)
+  notes           String?     // instrucciones del cliente
+  // Totales
+  subtotal        Float
+  total           Float
+  // Pago SIEMPRE por WhatsApp (sin opciones)
+  paymentMethod   String      @default("WHATSAPP")
+  paymentStatus   String      @default("PENDING") // PENDING | CONFIRMED | REFUNDED
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id          String  @id @default(cuid())
+  orderId     String
+  order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product @relation(fields: [productId], references: [id])
+  productName String
+  productImage String
+  price       Float
+  quantity    Int     @default(1)
+  notes       String?
+}
