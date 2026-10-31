@@ -135,7 +135,7 @@ export function Header() {
           onClick={() => setView("home")}
           className="font-display text-2xl font-semibold tracking-wider text-white md:text-3xl"
         >
-          Elvina's
+          Elvira's
         </button>
 
         {/* Desktop nav */}

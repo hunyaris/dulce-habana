@@ -62,7 +62,7 @@ export function HomeView() {
               </div>
 
               <h1 className="font-display text-6xl font-bold leading-[0.95] tracking-tight md:text-8xl">
-                <span className="block text-pop-white">ELVINA'S</span>
+                <span className="block text-pop-white">ELVIRA'S</span>
               </h1>
 
               <p className="mt-3 text-base text-white/80 md:text-lg">
@@ -94,13 +94,13 @@ export function HomeView() {
               </div>
             </div>
 
-            {/* Logo Elvina's en círculo (imagen del attachment) */}
+            {/* Logo Elvira's en círculo (sin borde blanco - zoom para recortar margen) */}
             <div className="relative hidden md:block">
-              <div className="relative aspect-square overflow-hidden rounded-full border-8 border-white/20 animate-float-slow shadow-2xl">
+              <div className="relative aspect-square overflow-hidden rounded-full animate-float-slow shadow-2xl">
                 <img
-                  src="/elvinas-logo.png"
-                  alt="Elvina's - Sabor casero. Artesanal."
-                  className="h-full w-full object-cover"
+                  src="/elviras-logo.png"
+                  alt="Elvira's - Sabor casero. Artesanal."
+                  className="h-full w-full object-cover scale-125"
                 />
               </div>
             </div>
@@ -111,7 +111,7 @@ export function HomeView() {
       {/* Marquee infinito */}
       <div className="bg-[var(--dh-cream)] py-4 border-y-2 border-[var(--dh-green)]">
         <Marquee
-          items={["ELVINA'S", "PANETELAS", "FLAN", "PANQUES", "CAFE", "BATIDOS", "COMBOS", "SABOR CASERO"]}
+          items={["ELVIRA'S", "PANETELAS", "FLAN", "PANQUES", "CAFE", "BATIDOS", "COMBOS", "SABOR CASERO"]}
           variant="filled"
           textColor="var(--dh-teal)"
           speed="normal"
@@ -119,13 +119,14 @@ export function HomeView() {
       </div>
 
       {/* Categorías */}
-      <section className="bg-[var(--dh-cream)] py-12">
-        <ScrollReveal className="mx-auto max-w-7xl px-4 md:px-6">
+      {/* Sección ELIGE TU ANTOJO con fondo teal del logo */}
+      <section className="bg-[var(--dh-teal)] py-12 relative overflow-hidden">
+        <ScrollReveal className="mx-auto max-w-7xl px-4 md:px-6 relative">
           <div className="text-center mb-8">
-            <Sticker variant="green" rotate={-2} className="inline-block mb-3">
+            <span className="inline-block mb-3 px-4 py-1.5 rounded-full bg-white text-[var(--dh-teal)] text-xs font-bold uppercase tracking-wider border-2 border-white">
               Explora
-            </Sticker>
-            <h2 className="font-display text-4xl font-bold text-[var(--dh-green)] md:text-6xl">
+            </span>
+            <h2 className="font-display text-4xl font-bold text-white md:text-6xl">
               ELIGE TU ANTOJO
             </h2>
           </div>
@@ -138,14 +139,14 @@ export function HomeView() {
                   setCatalogCategory(key);
                   setView("catalog");
                 }}
-                className="group card-hover-lift flex flex-col items-center gap-2 rounded-2xl bg-white p-6 border-2 border-[var(--dh-green)]/10 transition-all hover:border-[var(--dh-green)]"
+                className="group card-hover-lift flex flex-col items-center gap-2 rounded-2xl bg-white p-6 border-2 border-white/30 transition-all hover:border-white hover:scale-105"
                 style={{ transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)` }}
               >
                 <CategoryIcon
                   category={key}
-                  className="h-10 w-10 text-[var(--dh-green)] transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12"
+                  className="h-10 w-10 text-[var(--dh-teal)] transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12"
                 />
-                <span className="font-display text-xl text-[var(--dh-green)]">
+                <span className="font-display text-xl text-[var(--dh-teal)]">
                   {label}
                 </span>
               </button>
@@ -271,7 +272,7 @@ export function HomeView() {
       {/* Marquee outline text */}
       <div className="bg-[var(--dh-green-light)] py-8 border-y-2 border-[var(--dh-green)]">
         <Marquee
-          items={["ELVINA'S", "SABOR CASERO", "ARTESANAL", "HECHO A MANO"]}
+          items={["ELVIRA'S", "SABOR CASERO", "ARTESANAL", "HECHO A MANO"]}
           variant="outline"
           textColor="var(--dh-green)"
           separator="★"

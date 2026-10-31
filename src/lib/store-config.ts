@@ -4,7 +4,7 @@
 
 export const STORE_CONFIG = {
   // Marca
-  name: "Elvina's",
+  name: "Elvira's",
   tagline: "Sabor casero. Artesanal.",
   slogan: "Sabor casero. Artesanal.",
 

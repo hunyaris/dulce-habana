@@ -21,9 +21,13 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Elvina's · Sabor casero. Artesanal.",
-  description: "Elvina's - Sabor casero. Artesanal. Panetelas, panqués, flan, bebidas y combos. Pedidos por WhatsApp con entrega en La Habana.",
-  keywords: ["elvinas", "dulcería", "panetelas", "pan cubano", "flan", "dulces cubanos", "sabor casero", "artesanal"],
+  title: "Elvira's · Sabor casero. Artesanal.",
+  description: "Elvira's - Sabor casero. Artesanal. Panetelas, panqués, flan, bebidas y combos. Pedidos por WhatsApp con entrega en La Habana.",
+  keywords: ["elviras", "dulcería", "panetelas", "pan cubano", "flan", "dulces cubanos", "sabor casero", "artesanal"],
+  icons: {
+    icon: "/elviras-logo.png",
+    apple: "/elviras-logo.png",
+  },
 };
 
 export default function RootLayout({
