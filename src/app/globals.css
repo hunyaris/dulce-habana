@@ -44,8 +44,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* === PALETA TERRACOTA - aireada, acogedora, discreta === */
-/* #2a2f33 charcoal · #6f7a7e gray · #d5c7b1 sand · #f5f1ea cream · #a36f4e terracotta */
+/* === PALETA ELVINA'S - teal + crema + charcoal === */
+/* #2a2f33 charcoal · #6f7a7e gray · #d5c7b1 sand · #f5f1ea cream · #2BA0A1 teal */
 :root {
   --radius: 0.5rem;
   /* Paleta principal */
@@ -53,15 +53,17 @@
   --dh-gray: #6f7a7e;          /* gris medio discreto (textos muted) */
   --dh-sand: #d5c7b1;          /* arena cálida (bordes, fondos suaves) */
   --dh-cream: #f5f1ea;         /* crema aireado (background principal) */
-  --dh-terracotta: #a36f4e;    /* terracota cálido (acento, CTAs) */
+  --dh-teal: #2BA0A1;          /* teal del logo (acento principal) */
+  --dh-teal-light: #D4ECEC;    /* teal claro (fondos suaves teal) */
 
   /* Compatibilidad con componentes existentes (mantenemos nombres) */
   --dh-green: var(--dh-charcoal);         /* era verde oscuro → ahora charcoal */
-  --dh-green-bright: var(--dh-terracotta); /* era verde brillante → ahora terracotta */
-  --dh-green-light: var(--dh-sand);        /* era mint claro → ahora sand */
+  --dh-green-bright: var(--dh-teal);       /* era verde brillante → ahora teal */
+  --dh-green-light: var(--dh-teal-light);  /* era mint claro → ahora teal claro */
   --dh-tan: var(--dh-gray);                /* era tan → ahora gray */
   --dh-warm: var(--dh-sand);               /* era warm → ahora sand */
-  --dh-gold: var(--dh-terracotta);         /* era gold → ahora terracotta */
+  --dh-gold: var(--dh-teal);               /* era gold → ahora teal */
+  --dh-terracotta: var(--dh-teal);         /* mantener compatibilidad */
 
   /* Variables de Tailwind/shadcn */
   --background: #f5f1ea;                   /* crema aireado */

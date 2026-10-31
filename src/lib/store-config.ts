@@ -4,17 +4,17 @@
 
 export const STORE_CONFIG = {
   // Marca
-  name: "DULCE HABANA",
-  tagline: "Dulcería artesanal",
-  slogan: "Endulzando La Habana, una panetela a la vez",
+  name: "Elvina's",
+  tagline: "Sabor casero. Artesanal.",
+  slogan: "Sabor casero. Artesanal.",
 
   // WhatsApp de la dulcería (formato internacional sin + ni espacios)
   // 53 + 5XXXXXXXX = Cuba móvil
-  whatsappNumber: "5354705560",
+  whatsappNumber: "53512345678",
 
   // Email e Instagram
-  email: "hunyamm.fontic@gmail.com",
-  instagram: "@hunyaris_filfri",
+  email: "pedidos@dulcehabana.cu",
+  instagram: "@dulcehabana",
   city: "La Habana, Cuba",
 
   // Horario

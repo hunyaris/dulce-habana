@@ -62,13 +62,13 @@ export function HomeView() {
               </div>
 
               <h1 className="font-display text-6xl font-bold leading-[0.95] tracking-tight md:text-8xl">
-                <span className="block text-pop-white">ENDULZANDO</span>
-                <span className="block">LA HABANA</span>
+                <span className="block text-pop-white">ELVINA'S</span>
               </h1>
 
-              <p className="mt-5 max-w-md text-base text-white/80 md:text-lg">
-                Panetelas, panques, flan y bebidas hechos a mano. Recetas
-                tradicionales cubanas con ingredientes frescos de la isla.
+              <p className="mt-3 text-base text-white/80 md:text-lg">
+                <span className="font-display text-2xl tracking-wider text-[var(--dh-teal-light)]">
+                  SABOR CASERO. ARTESANAL.
+                </span>
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -85,9 +85,8 @@ export function HomeView() {
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
                   onClick={() => setView("delivery-zones")}
-                  className="btn-stamp rounded-full border-white text-white hover:bg-white/10 text-base"
+                  className="btn-stamp rounded-full border-2 border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-white/50 text-base backdrop-blur-sm"
                 >
                   <MapPin className="mr-2 h-4 w-4" />
                   Zonas de entrega
@@ -95,34 +94,14 @@ export function HomeView() {
               </div>
             </div>
 
-            {/* Imagen hero circular con sello giratorio */}
+            {/* Logo Elvina's en círculo (imagen del attachment) */}
             <div className="relative hidden md:block">
-              <div className="relative aspect-square overflow-hidden rounded-full border-8 border-white/20 animate-float-slow">
+              <div className="relative aspect-square overflow-hidden rounded-full border-8 border-white/20 animate-float-slow shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1565956632347-3971756c5c84?w=800&q=80"
-                  alt="Dulces artesanales"
+                  src="/elvinas-logo.png"
+                  alt="Elvina's - Sabor casero. Artesanal."
                   className="h-full w-full object-cover"
                 />
-              </div>
-
-              {/* Sello giratorio (sin emoji, texto + forma) */}
-              <div
-                className="absolute -top-2 -right-2 animate-spin-slow"
-                aria-hidden="true"
-              >
-                <svg viewBox="0 0 100 100" className="h-24 w-24 md:h-28 md:w-28">
-                  <defs>
-                    <path id="circle-path" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
-                  </defs>
-                  <circle cx="50" cy="50" r="44" fill="var(--dh-gold)" />
-                  <text fill="var(--dh-green)" fontSize="8" fontWeight="bold" letterSpacing="1">
-                    <textPath href="#circle-path">
-                      ★ DULCE HABANA ★ ARTESANAL ★ DESDE 2024 ★
-                    </textPath>
-                  </text>
-                  <text x="50" y="48" textAnchor="middle" fontSize="10" fontWeight="bold" fill="var(--dh-green)" letterSpacing="2">DESDE</text>
-                  <text x="50" y="62" textAnchor="middle" fontSize="14" fontWeight="bold" fill="var(--dh-green)">50 CUP</text>
-                </svg>
               </div>
             </div>
           </div>
@@ -132,9 +111,9 @@ export function HomeView() {
       {/* Marquee infinito */}
       <div className="bg-[var(--dh-cream)] py-4 border-y-2 border-[var(--dh-green)]">
         <Marquee
-          items={MARQUEE_ITEMS}
+          items={["ELVINA'S", "PANETELAS", "FLAN", "PANQUES", "CAFE", "BATIDOS", "COMBOS", "SABOR CASERO"]}
           variant="filled"
-          textColor="var(--dh-green)"
+          textColor="var(--dh-teal)"
           speed="normal"
         />
       </div>
@@ -292,7 +271,7 @@ export function HomeView() {
       {/* Marquee outline text */}
       <div className="bg-[var(--dh-green-light)] py-8 border-y-2 border-[var(--dh-green)]">
         <Marquee
-          items={["DULCE HABANA", "ARTESANAL", "HECHO A MANO", "DESDE 2024"]}
+          items={["ELVINA'S", "SABOR CASERO", "ARTESANAL", "HECHO A MANO"]}
           variant="outline"
           textColor="var(--dh-green)"
           separator="★"

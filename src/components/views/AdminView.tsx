@@ -128,7 +128,7 @@ export function AdminView() {
           Panel administrativo
         </p>
         <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight md:text-4xl text-[var(--dh-green)]">
-          DULCE HABANA · Dashboard
+          Elvina's · Dashboard
         </h1>
       </div>
 

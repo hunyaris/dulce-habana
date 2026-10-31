@@ -21,9 +21,9 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "DULCE HABANA · Dulcería Artesanal",
-  description: "Dulcería cubana artesanal. Panetelas, panqués, flan, bebidas y combos. Pedidos por WhatsApp con entrega en La Habana.",
-  keywords: ["dulcería", "panetelas", "pan cubano", "flan", "dulces cubanos", "La Habana"],
+  title: "Elvina's · Sabor casero. Artesanal.",
+  description: "Elvina's - Sabor casero. Artesanal. Panetelas, panqués, flan, bebidas y combos. Pedidos por WhatsApp con entrega en La Habana.",
+  keywords: ["elvinas", "dulcería", "panetelas", "pan cubano", "flan", "dulces cubanos", "sabor casero", "artesanal"],
 };
 
 export default function RootLayout({

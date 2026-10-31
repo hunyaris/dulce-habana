@@ -130,12 +130,12 @@ export function Header() {
           </SheetContent>
         </Sheet>
 
-        {/* Logo - solo texto, sin emoji */}
+        {/* Logo Elvina's */}
         <button
           onClick={() => setView("home")}
           className="font-display text-2xl font-semibold tracking-wider text-white md:text-3xl"
         >
-          DULCE HABANA
+          Elvina's
         </button>
 
         {/* Desktop nav */}

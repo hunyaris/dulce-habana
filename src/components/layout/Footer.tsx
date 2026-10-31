@@ -15,10 +15,10 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <span className="font-display text-2xl tracking-wider">
-              DULCE HABANA
+              Elvina's
             </span>
             <p className="mt-3 max-w-xs text-sm text-white/70">
-              Dulcería artesanal cubana. Recetas tradicionales hechas a mano
+              Sabor casero. Artesanal. Recetas tradicionales hechas a mano
               con ingredientes frescos de la isla.
             </p>
           </div>
