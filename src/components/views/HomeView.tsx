@@ -94,8 +94,8 @@ export function HomeView() {
               </div>
             </div>
 
-            {/* Logo Elvira's en círculo (sin borde blanco - zoom para recortar margen) */}
-            <div className="relative hidden md:block">
+            {/* Logo Elvira's en círculo (visible en móvil y desktop) */}
+            <div className="relative mx-auto w-48 md:w-full md:mx-0">
               <div className="relative aspect-square overflow-hidden rounded-full animate-float-slow shadow-2xl">
                 <img
                   src="/elviras-logo.png"
