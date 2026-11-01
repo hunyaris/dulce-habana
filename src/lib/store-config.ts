@@ -10,7 +10,7 @@ export const STORE_CONFIG = {
 
   // WhatsApp de la dulcería (formato internacional sin + ni espacios)
   // 53 + 5XXXXXXXX = Cuba móvil
-  whatsappNumber: "53512345678",
+  whatsappNumber: "5354705560",
 
   // Email e Instagram
   email: "pedidos@dulcehabana.cu",
