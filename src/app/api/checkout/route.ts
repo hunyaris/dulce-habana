@@ -1,11 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { generateOrderNumber } from "@/lib/format";
+import { rateLimit, getClientIP, RATE_LIMITS, getRateLimitHeaders } from "@/lib/rate-limit";
 
 // POST /api/checkout - Crea orden SIEMPRE con método WhatsApp
 // Body: { items: [{productId, quantity, notes?}], customer, delivery }
 export async function POST(req: NextRequest) {
   try {
+    // === RATE LIMITING ===
+    const clientIP = getClientIP(req);
+    const rateResult = rateLimit(clientIP, RATE_LIMITS.CHECKOUT);
+
+    if (!rateResult.success) {
+      const retryAfter = Math.ceil((rateResult.resetTime - Date.now()) / 1000);
+      return NextResponse.json(
+        {
+          error: "Demasiados pedidos en poco tiempo. Intenta de nuevo en " +
+            Math.ceil(retryAfter / 60) + " minutos.",
+        },
+        {
+          status: 429,
+          headers: {
+            ...getRateLimitHeaders(rateResult),
+            "Retry-After": retryAfter.toString(),
+          },
+        }
+      );
+    }
+
     const body = await req.json();
     const { items, customer, delivery } = body;
 

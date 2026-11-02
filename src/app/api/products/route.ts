@@ -1,10 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { rateLimit, getClientIP, RATE_LIMITS, getRateLimitHeaders } from "@/lib/rate-limit";
 
 // GET /api/products - Listar productos con filtros
 // ?category=PANETELAS&search=...
 export async function GET(req: NextRequest) {
   try {
+    // Rate limiting general (100 req/min por IP)
+    const clientIP = getClientIP(req);
+    const rateResult = rateLimit(clientIP, RATE_LIMITS.API_GENERAL);
+    if (!rateResult.success) {
+      return NextResponse.json(
+        { error: "Demasiadas peticiones. Intenta de nuevo en 1 minuto." },
+        { status: 429, headers: getRateLimitHeaders(rateResult) }
+      );
+    }
+
     const { searchParams } = new URL(req.url);
     const category = searchParams.get("category");
     const search = searchParams.get("search");
@@ -39,6 +50,16 @@ export async function GET(req: NextRequest) {
 // POST /api/products - Crear producto (admin)
 export async function POST(req: NextRequest) {
   try {
+    // Rate limiting para creación de productos
+    const clientIP = getClientIP(req);
+    const rateResult = rateLimit(clientIP, RATE_LIMITS.PRODUCT_CREATE);
+    if (!rateResult.success) {
+      return NextResponse.json(
+        { error: "Demasiadas creaciones. Intenta de nuevo más tarde." },
+        { status: 429, headers: getRateLimitHeaders(rateResult) }
+      );
+    }
+
     const body = await req.json();
     const {
       name,
